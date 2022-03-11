@@ -1,4 +1,4 @@
-# Bats
+# Bats Runner
 ![build_workflow](https://github.com/tomclement/bats/actions/workflows/build.yml/badge.svg)
 ![release_workflow](https://github.com/tomclement/bats/actions/workflows/release.yml/badge.svg)
 
