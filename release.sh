@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+IMAGE_NAME='bats-runner'
+REPOSITORY_NAME='bats'
+ORGANIZATION='tomclement'
+REGISTRY="ghcr.io/$ORGANIZATION/$REPOSITORY_NAME"
+VERSION=$(git rev-parse --short HEAD)
+IMAGE_TAG_GITHUB="$REGISTRY/$IMAGE_NAME:$VERSION"
+
+docker pull "$IMAGE_TAG_GITHUB"
+
+docker tag "$IMAGE_TAG_GITHUB" "$REGISTRY/$IMAGE_NAME":latest
+docker tag "$IMAGE_TAG_GITHUB" "$REGISTRY/$IMAGE_NAME:$GITHUB_REF_NAME"
+
+docker push "$REGISTRY/$IMAGE_NAME":latest
+docker push "$REGISTRY/$IMAGE_NAME:$GITHUB_REF_NAME"
